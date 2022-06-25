@@ -1,46 +1,40 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'questao.dart';
-import 'resposta.dart';
 
 main() {
   runApp(MeuApp());
 }
 
 class _MeuAppState extends State<MeuApp> {
-  var _perguntaSelecionada = 0;
-
-  void _responder() {
-    setState(() {
-      _perguntaSelecionada++;
-    });
-  }
-
+  @override
   Widget build(BuildContext context) {
-    final List<Map<String, Object>> perguntas = [
-      {
-        'texto': 'Primeira pergunta ?',
-        'resposta': ['resposta 1', 'Resposta 2', 'Resposta 3']
-      },
-      {
-        'texto': 'Segunda pergunta ?',
-        'resposta': ['Resposta 1', 'Resposta 2', 'Resposta 3']
-      },
-      {
-        'texto': 'Terceira pergunta ? ',
-        'resposta': ['Resposta 1', 'Resposta 2', 'Resposta 3']
-      }
-    ];
-
-    List<String> respostas = perguntas[_perguntaSelecionada].cast()['resposta'];
-
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(),
-        body: Column(
-          children: <Widget>[
-            Questao(perguntas[_perguntaSelecionada]['texto'].toString()),
-            ...respostas.map((t) => Resposta(t, _responder)).toList()
-          ],
+        appBar: AppBar(
+          backgroundColor: Colors.blueGrey[200],
+          title: Center(
+              child: Container(
+            child: Text(
+              'Atendimento',
+              style: TextStyle(fontSize: 28),
+            ),
+          )),
+        ),
+        body: Container(
+          child: Column(
+            children: [
+              Container(
+                width: double.infinity,
+                height: 70,
+                padding: EdgeInsets.all(14),
+                color: Color.fromARGB(255, 128, 163, 191),
+                child: Text(
+                  'Próximo: ',
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
